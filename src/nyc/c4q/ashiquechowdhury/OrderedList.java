@@ -19,7 +19,19 @@ public class OrderedList extends AbstractList{
 
     @Override
     public void add(Integer integer) {
-        set(2, integer);
+        boolean isFull = true;
+        for (int i = 0; i < size; i++) {
+            if (values[i] == null) {
+                values[i] = integer;
+                isFull = false;
+                break;
+            }
+        }
+        if(isFull){
+            System.out.println("full array use SET()");
+        }
+
+
     }
 
     @Override
@@ -29,7 +41,11 @@ public class OrderedList extends AbstractList{
 
     @Override
     public void set(int index, Integer value) {
-        values[index] = value;
+        if (index < values.length && index > 0) {
+            values[index] = value;
+        } else {
+            System.out.println("Err index out of bounds");
+        }
     }
 
     @Override
